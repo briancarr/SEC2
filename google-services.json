@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "627494148122",
+    "firebase_url": "https://soundscape-815a3.firebaseio.com",
+    "project_id": "soundscape-815a3",
+    "storage_bucket": "soundscape-815a3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:627494148122:android:14e14785fa8507b7",
+        "android_client_info": {
+          "package_name": "com.example.me.soundscape"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "627494148122-i807t9octgul67psi4nmho1v6s4mosom.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqNbEM9lLy4pMbjmX-2zkdIP2Ke4Tx06A"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">SEC</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_menu">MenuActivity</string>
+    <string name="dummy_button">EXHIBITION</string>
+    <string name="name">RICHARD\nCARR</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="google_maps_key">0000</string>
+    <string name="title_activity_maps2">Map</string>
+</resources>
