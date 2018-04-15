@@ -90,6 +90,7 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnInfoWi
 
         namesList = getIntent().getStringArrayListExtra("nameList");
 
+        Log.i("Namelist",namesList.toString());
         Log.i("_keyActive",_keyActive.toString());
 
         database = FirebaseDatabase.getInstance();

@@ -1,35 +1,27 @@
 {
   "project_info": {
-    "project_number": "232926707873",
-    "firebase_url": "https://soundscape-adad7.firebaseio.com",
-    "project_id": "soundscape-adad7",
-    "storage_bucket": "soundscape-adad7.appspot.com"
+    "project_number": "627494148122",
+    "firebase_url": "https://soundscape-815a3.firebaseio.com",
+    "project_id": "soundscape-815a3",
+    "storage_bucket": "soundscape-815a3.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:232926707873:android:fe2d5c7937fc4f3a",
+        "mobilesdk_app_id": "1:627494148122:android:14e14785fa8507b7",
         "android_client_info": {
-          "package_name": "com.scape.sec.sec"
+          "package_name": "com.example.me.soundscape"
         }
       },
       "oauth_client": [
         {
-          "client_id": "232926707873-qtsam8f62det3coiu8bc2v2vi9vcjb57.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.scape.sec.sec",
-            "certificate_hash": "8a3a758210f00a3e92824270c60e1417fdac222e"
-          }
-        },
-        {
-          "client_id": "232926707873-8mu0esg44142aedsd4r8a3fufm37nra8.apps.googleusercontent.com",
+          "client_id": "627494148122-i807t9octgul67psi4nmho1v6s4mosom.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCloW1540OA_nYXqeAg0AFTUDUGqhvs3ew"
+          "current_key": "AIzaSyAqNbEM9lLy4pMbjmX-2zkdIP2Ke4Tx06A"
         }
       ],
       "services": {
@@ -37,13 +29,8 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "232926707873-8mu0esg44142aedsd4r8a3fufm37nra8.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "status": 1,
+          "other_platform_oauth_client": []
         },
         "ads_service": {
           "status": 2
@@ -52,28 +39,59 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:232926707873:android:cb73d8b78df6c330",
+        "mobilesdk_app_id": "1:627494148122:android:fe2d5c7937fc4f3a",
+        "android_client_info": {
+          "package_name": "com.scape.sec.sec"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "627494148122-i807t9octgul67psi4nmho1v6s4mosom.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqNbEM9lLy4pMbjmX-2zkdIP2Ke4Tx06A"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:627494148122:android:cb73d8b78df6c330",
         "android_client_info": {
           "package_name": "com.scape.sound.soundscape"
         }
       },
       "oauth_client": [
         {
-          "client_id": "232926707873-vhc44i40v17pkjei7k54nlrkkh38pu24.apps.googleusercontent.com",
+          "client_id": "627494148122-0tn3ju3930biueh01k1ua6kdbuudddpm.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.scape.sound.soundscape",
-            "certificate_hash": "8a3a758210f00a3e92824270c60e1417fdac222e"
+            "certificate_hash": "6623cfecbbac05aa1a8a1926664d13c14a0535d4"
           }
         },
         {
-          "client_id": "232926707873-8mu0esg44142aedsd4r8a3fufm37nra8.apps.googleusercontent.com",
+          "client_id": "627494148122-i807t9octgul67psi4nmho1v6s4mosom.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCloW1540OA_nYXqeAg0AFTUDUGqhvs3ew"
+          "current_key": "AIzaSyAqNbEM9lLy4pMbjmX-2zkdIP2Ke4Tx06A"
         }
       ],
       "services": {
@@ -84,7 +102,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "232926707873-8mu0esg44142aedsd4r8a3fufm37nra8.apps.googleusercontent.com",
+              "client_id": "627494148122-i807t9octgul67psi4nmho1v6s4mosom.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
