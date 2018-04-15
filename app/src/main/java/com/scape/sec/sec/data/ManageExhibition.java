@@ -21,13 +21,13 @@ import java.util.concurrent.CountDownLatch;
  * Created by Me on 28/10/2016.
  */
 
-public class FetchExhibition {
+public class ManageExhibition {
 
     SQLiteDatabase db;
     FirebaseProvider firebase;
     ArrayList<Work> work;
 
-    public FetchExhibition(Context context, String directory){
+    public ManageExhibition(Context context, String directory){
         setupDatabase(context);
         firebase = new FirebaseProvider(directory);
         firebase.getWorks();
@@ -40,24 +40,34 @@ public class FetchExhibition {
         db = helper.getWritableDatabase();
     }
 
-    private long adExhibition(String... params){
-        String Title = params[0];
-        String Content = params[0];
+    public long create(ExhibitionEntry exhibition){
+//        String Title = params[0];
+//        String Content = params[0];
 
         ContentValues Values = new ContentValues();
 
-        Values.put ( ExhibitionEntry.COLUMN_NAME , Title );
-        Values.put ( ExhibitionEntry.COLUMN_IMAGE_URL , Content );
+//        Values.put ( ExhibitionEntry.COLUMN_NAME , Title );
+//        Values.put ( ExhibitionEntry.COLUMN_IMAGE_URL , Content );
         // Insert The New Row, Returning The Primary Key Value Of The New Row Long NewRowId ;
         long NewRowId = db.insert( ExhibitionEntry.TABLE_NAME ,null ,Values );
 
         return  NewRowId;
     }
 
+    public void read(){
 
-    private long adWorks(String... params){
+    }
+
+    public void update(ExhibitionEntry exhibition){
+
+    }
+
+    public void delete(ExhibitionEntry exhibition){
+
+    }
 
 
+     public long createWorks(String... params){
 
         int Id = 0 ;
         String Title = params[0];
@@ -82,6 +92,11 @@ public class FetchExhibition {
         return  NewRowId;
     }
 
+    public ArrayList getWorks() {
+        return firebase.getWorks();
+    }
+
+
     public class FirebaseProvider {
 
         ArrayList<String> namesList = new ArrayList<>();
@@ -95,17 +110,12 @@ public class FetchExhibition {
 
 
         public FirebaseProvider(String... params){
-            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            database = FirebaseDatabase.getInstance();
             myRef = database.getReference(params[0]);
             getWorks();
         }
 
-        public void GetExibition(){
-
-        }
-
-        public void getWorks(){
-
+        public ArrayList getWorks() {
             // Read from the database
             myRef.addValueEventListener(new ValueEventListener() {
                 @Override
@@ -134,8 +144,13 @@ public class FetchExhibition {
                 }
 
             });
+            return namesList;
+        }
+
+        public void GetExibition(){
 
         }
+
 
 //        public ArrayList<LatLng> GetLocations(){
 //

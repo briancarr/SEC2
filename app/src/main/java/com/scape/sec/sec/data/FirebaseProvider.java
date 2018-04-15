@@ -1,10 +1,10 @@
-package com.example.me.soundscape.data;
+package com.scape.sec.sec.data;
 
 /**
  * Created by Me on 25/10/2016.
  */
 
-//public class FirebaseProvider {
+public class FirebaseProvider {
 //
 //    ArrayList<Work> activeWork = new ArrayList<>();
 //    static ArrayList<String> namesList = new ArrayList<>();
@@ -116,4 +116,4 @@ package com.example.me.soundscape.data;
 //    public ArrayList<LatLng> getLatlngList() {
 //        return latlngList;
 //    }
-//}
+}

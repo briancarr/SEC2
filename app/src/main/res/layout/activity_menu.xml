@@ -37,15 +37,24 @@
             tools:ignore="UselessParent">
 
             <Button
+                android:id="@+id/add_button"
+                style="@android:style/Widget.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:background="@color/background_floating_material_light"
+                android:text="Add"
+                android:textAppearance="@style/TextAppearance.AppCompat" />
+
+            <Button
                 android:id="@+id/dummy_button"
 
-                android:layout_width="fill_parent"
-                android:layout_height="89dp"
-                android:text="@string/dummy_button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
                 android:background="@color/background_floating_material_light"
-                android:textColor="@color/abc_secondary_text_material_light"
-                android:textStyle="bold"
-                android:textSize="38dp" />
+                android:text="@string/dummy_button"
+                android:textAppearance="@style/TextAppearance.AppCompat" />
 
         </LinearLayout>
     </FrameLayout>

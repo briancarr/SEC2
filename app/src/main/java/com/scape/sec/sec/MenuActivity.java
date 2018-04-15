@@ -6,22 +6,18 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.scape.sec.sec.Model.Work;
-import com.scape.sec.sec.data.FetchExhibition;
+import com.scape.sec.sec.data.ManageExhibition;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -115,7 +111,7 @@ public class MenuActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_menu);
 
-        FetchExhibition exhibition = new FetchExhibition(this,"works");
+        ManageExhibition exhibition = new ManageExhibition(this,"works");
 
         mVisible = true;
         mControlsView = findViewById(R.id.fullscreen_content_controls);
@@ -128,42 +124,9 @@ public class MenuActivity extends AppCompatActivity {
         final DatabaseReference myRef = database.getReference("works");
         final FirebaseStorage storage = FirebaseStorage.getInstance();
 
+        namesList = exhibition.getWorks();
 
 
-        // Read from the database
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                int count = 0;
-                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
-                    Work post = postSnapshot.getValue(Work.class);
-                    System.out.println(post.getName() + " - " + post.getLocation());
-                    namesList.add(post.getName());
-
-//                    if(post.isActive() == true){
-//                        activeWork[0] = post;
-
-//                        //names[count] = post.getName();
-//                        count++;
-//                        button.setText(activeWork[0].getName());
-//                        Log.d("snaphot", "Value is: "+activeWork[0].getName()+" Image: "+activeWork[0].getImage()  );
-//                        httpsReference = storage.getReferenceFromUrl(activeWork[0].getImage());
-//                    }
-                }
-
-//                Log.d("snaphot", "Value is: "+activeWork[0].getName()+""  );
-
-            }
-
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                Log.w("snaphot", "Failed to read value.", error.toException());
-            }
-        });
 
 //        StorageReference httpsReference = null;
 //        final long ONE_MEGABYTE = 2048 * 2048;
@@ -201,8 +164,17 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(getApplicationContext(), MapsActivity2.class);
-                //intent.putExtra("nameList",namesList);
+                Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+                intent.putExtra("nameList",namesList);
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.add_button).setOnTouchListener(mDelayHideTouchListener);
+        findViewById(R.id.add_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getApplicationContext(), AddWorkActivity.class);
                 startActivity(intent);
             }
         });

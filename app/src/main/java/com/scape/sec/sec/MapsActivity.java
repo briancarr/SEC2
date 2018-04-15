@@ -83,7 +83,7 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnInfoWi
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        //firebase = new FetchExhibition.FirebaseProvider("works");
+        //firebase = new ManageExhibition.FirebaseProvider("works");
 
         fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setBackgroundTintList(ColorStateList.valueOf(Color.GRAY).withAlpha(200));
