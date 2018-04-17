@@ -178,6 +178,9 @@ public class MenuActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        exhibition.createWork("test", "123", "123", "123", true);
+        exhibition.read();
+
     }
 
 

@@ -4,15 +4,14 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import com.scape.sec.sec.Location;
-import com.scape.sec.sec.Model.ExhibitionEntry;
-import com.scape.sec.sec.Model.Work;
-import com.scape.sec.sec.Model.WorkEntry;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.scape.sec.sec.Location;
+import com.scape.sec.sec.Model.ExhibitionEntry;
+import com.scape.sec.sec.Model.Work;
 
 import java.util.ArrayList;
 import java.util.concurrent.CountDownLatch;
@@ -55,7 +54,7 @@ public class ManageExhibition {
     }
 
     public void read(){
-
+        firebase.getLocations();
     }
 
     public void update(ExhibitionEntry exhibition){
@@ -67,29 +66,31 @@ public class ManageExhibition {
     }
 
 
-     public long createWorks(String... params){
+     public void createWork(String name,String image, String audio, String location, boolean active){
 
-        int Id = 0 ;
-        String Title = params[0];
-        String Content = params[1];
-        String Name = params[2];
-        String Audio_Url = params[3];
-        String Image_Url = params[4];
-        String lat = params[5];
-        String lng = params[6];
 
-        ContentValues Values = new ContentValues();
 
-        Values.put ( WorkEntry.COLUMN_LOCATION_NAME, Title );
-        Values.put ( WorkEntry.COLUMN_WORK_NAME, Name );
-        Values.put ( WorkEntry.COLUMN_IMAGE_URL, Image_Url );
-        Values.put ( WorkEntry.COLUMN_AUDIO_URL, Audio_Url );
-        Values.put ( WorkEntry.COLUMN_COORD_LAT, lat );
-        Values.put ( WorkEntry.COLUMN_COORD_LONG, lng );
-        // Insert The New Row, Returning The Primary Key Value Of The New Row Long NewRowId ;
-        long NewRowId = db.insert( WorkEntry.TABLE_NAME ,null ,Values );
+//        int Id = 0 ;
+//        String Title = params[0];
+//        String Content = params[1];
+//        String Name = params[2];
+//        String Audio_Url = params[3];
+//        String Image_Url = params[4];
+//        String lat = params[5];
+//        String lng = params[6];
+//
+//        ContentValues Values = new ContentValues();
+//
+//        Values.put ( WorkEntry.COLUMN_LOCATION_NAME, Title );
+//        Values.put ( WorkEntry.COLUMN_WORK_NAME, Name );
+//        Values.put ( WorkEntry.COLUMN_IMAGE_URL, Image_Url );
+//        Values.put ( WorkEntry.COLUMN_AUDIO_URL, Audio_Url );
+//        Values.put ( WorkEntry.COLUMN_COORD_LAT, lat );
+//        Values.put ( WorkEntry.COLUMN_COORD_LONG, lng );
+//        // Insert The New Row, Returning The Primary Key Value Of The New Row Long NewRowId ;
+//        long NewRowId = db.insert( WorkEntry.TABLE_NAME ,null ,Values );
+         firebase.createWork( name, image,  audio,  location,  active);
 
-        return  NewRowId;
     }
 
     public ArrayList getWorks() {
@@ -113,6 +114,11 @@ public class ManageExhibition {
             database = FirebaseDatabase.getInstance();
             myRef = database.getReference(params[0]);
             getWorks();
+        }
+
+        public void createWork(String name,String image, String audio, String location, boolean active){
+            String key =  myRef.push().getKey();
+            myRef.child(key).setValue(new Work(key,name,image,audio,location,active));
         }
 
         public ArrayList getWorks() {
@@ -147,8 +153,9 @@ public class ManageExhibition {
             return namesList;
         }
 
-        public void GetExibition(){
-
+        public void getLocations(){
+            GeoFireHelper geoFireHelper = new GeoFireHelper(myRef);
+            geoFireHelper.getLocation("213");
         }
 
 
