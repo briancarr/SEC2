@@ -96,6 +96,7 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnInfoWi
         database = FirebaseDatabase.getInstance();
         DatabaseReference _myRef = database.getReference();
 
+
         for (String name:namesList) {
             Log.i("key name",name);
             infoTitle = name;
@@ -104,8 +105,12 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnInfoWi
             _myRef.child(name + "/l").addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot snapshot) {
-                    String lat = snapshot.child("0").getValue().toString();
-                    String lng = snapshot.child("1").getValue().toString();
+                    String lat = "0.00";
+                    String lng = "0.00";
+                    if(snapshot.child("0").getValue() != null && snapshot.child("1").getValue() != null){
+                        lat = snapshot.child("0").getValue().toString();
+                        lng = snapshot.child("1").getValue().toString();
+                    }
 
                     Log.i("lat snapshop",lat);
                     Log.i("lng snapshop",lng);
@@ -175,6 +180,8 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnInfoWi
         LocationListener locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
+
+                Log.i("Location", location.toString());
 
                 mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(location.getLatitude(), location.getLongitude()), 16.0f));
                 Log.i("Location Changed :", location.toString());
@@ -373,9 +380,22 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnInfoWi
         }
         mMap.setMyLocationEnabled(true);
 
-        LatLng myLocation = new LatLng(lat, lng );
-        mMap.setOnInfoWindowClickListener(this);
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(myLocation));
+        //LatLng myLocation = new LatLng(lat, lng );
+        //mMap.setOnInfoWindowClickListener(this);
+        LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+        Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        mMap.setOnMyLocationChangeListener(new GoogleMap.OnMyLocationChangeListener() {
+
+            @Override
+            public void onMyLocationChange(Location arg0) {
+                // TODO Auto-generated method stub
+
+                mMap.addMarker(new MarkerOptions().position(new LatLng(arg0.getLatitude(), arg0.getLongitude())).title("It's Me!"));
+            }
+        });
+
+        Log.i("Location", "lat: "+location.getLatitude()+ " Lng: "+location.getLongitude());
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(location.getLatitude(),location.getLongitude())));
         mMap.getUiSettings().setZoomControlsEnabled(false);
 
     }
